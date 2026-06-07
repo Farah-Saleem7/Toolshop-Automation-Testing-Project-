@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-06-02T17:15:31 EEST" name="Default suite" finished-at="2026-06-02T17:16:28 EEST" duration-ms="57055">
+    <groups>
+    </groups>
+    <test started-at="2026-06-02T17:15:31 EEST" name="Default test" finished-at="2026-06-02T17:16:28 EEST" duration-ms="57055">
+      <class name="test.PasswordTests">
+        <test-method is-config="true" signature="setup()[pri:0, instance:test.PasswordTests@dd05255]" started-at="2026-06-02T17:15:31 EEST" name="setup" finished-at="2026-06-02T17:15:37 EEST" duration-ms="5981" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="TC_m3_22_verifyChangePasswordPageDisplayed()[pri:22, instance:test.PasswordTests@dd05255]" started-at="2026-06-02T17:15:37 EEST" name="TC_m3_22_verifyChangePasswordPageDisplayed" finished-at="2026-06-02T17:15:43 EEST" duration-ms="6222" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_m3_22_verifyChangePasswordPageDisplayed -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:test.PasswordTests@dd05255]" started-at="2026-06-02T17:15:43 EEST" name="tearDown" finished-at="2026-06-02T17:15:45 EEST" duration-ms="2190" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:test.PasswordTests@dd05255]" started-at="2026-06-02T17:15:45 EEST" name="setup" finished-at="2026-06-02T17:15:51 EEST" duration-ms="5469" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="TC_m3_23_passwordChangeWithIncorrectOldPassword()[pri:23, instance:test.PasswordTests@dd05255]" started-at="2026-06-02T17:15:51 EEST" name="TC_m3_23_passwordChangeWithIncorrectOldPassword" finished-at="2026-06-02T17:15:57 EEST" duration-ms="6582" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_m3_23_passwordChangeWithIncorrectOldPassword -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:test.PasswordTests@dd05255]" started-at="2026-06-02T17:15:57 EEST" name="tearDown" finished-at="2026-06-02T17:16:00 EEST" duration-ms="2181" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:test.PasswordTests@dd05255]" started-at="2026-06-02T17:16:00 EEST" name="setup" finished-at="2026-06-02T17:16:05 EEST" duration-ms="5341" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="TC_m3_24_passwordChangeWithWeakNewPassword()[pri:24, instance:test.PasswordTests@dd05255]" started-at="2026-06-02T17:16:05 EEST" name="TC_m3_24_passwordChangeWithWeakNewPassword" finished-at="2026-06-02T17:16:11 EEST" duration-ms="6520" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_m3_24_passwordChangeWithWeakNewPassword -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:test.PasswordTests@dd05255]" started-at="2026-06-02T17:16:11 EEST" name="tearDown" finished-at="2026-06-02T17:16:14 EEST" duration-ms="2174" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:test.PasswordTests@dd05255]" started-at="2026-06-02T17:16:14 EEST" name="setup" finished-at="2026-06-02T17:16:19 EEST" duration-ms="5862" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="TC_m3_25_passwordChangeWithEmptyFields()[pri:25, instance:test.PasswordTests@dd05255]" started-at="2026-06-02T17:16:19 EEST" name="TC_m3_25_passwordChangeWithEmptyFields" finished-at="2026-06-02T17:16:26 EEST" duration-ms="6316" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_m3_25_passwordChangeWithEmptyFields -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:test.PasswordTests@dd05255]" started-at="2026-06-02T17:16:26 EEST" name="tearDown" finished-at="2026-06-02T17:16:28 EEST" duration-ms="2178" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- test.PasswordTests -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

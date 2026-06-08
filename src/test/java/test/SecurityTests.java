@@ -1,23 +1,114 @@
 package test;
 
+
 import main.BaseTest;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod; 
 import org.testng.annotations.Test;
 import main.LoginPage;
 import main.RegisterPage;
 import main.ProfilePage;
-import java.time.Duration; 
-
-public class SecurityTests extends BaseTest {
+import org.testng.annotations.DataProvider;
  
-    @BeforeMethod
-    public void setupTimeout() {
-        if (driver != null) {
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        }
-    }
+public class SecurityTests extends BaseTest {
+	@DataProvider(name = "loginData")
+	public Object[][] loginData() {
+	    return new Object[][]{
+	            {"customer2@practicesoftwaretesting.com", "welcome01", true},
+	            {"customer2@practicesoftwaretesting.com", "WrongPassword123!", false},
+	            {"", "", false}
+	    };
+	}
 
+	@DataProvider(name = "invalidRegistrationData")
+	public Object[][] invalidRegistrationData() {
+	    return new Object[][]{
+	            {
+	                    "Farah",
+	                    "Test",
+	                    "1999-05-10",
+	                    "Gaza Street",
+	                    "12345",
+	                    "Gaza",
+	                    "Gaza",
+	                    "Palestine",
+	                    "0599999999",
+	                    "farah_test.com",
+	                    "StrongPassword123!"
+	            },
+	            {
+	                    "Farah",
+	                    "Test",
+	                    "1999-05-10",
+	                    "Gaza Street",
+	                    "12345",
+	                    "Gaza",
+	                    "Gaza",
+	                    "Palestine",
+	                    "0599999999",
+	                    "farah@test.com",
+	                    "123"
+	            }
+	    };
+	}
+	@Test(priority = 4, dataProvider = "loginData")
+	public void verifyLoginScenarios(
+	        String email,
+	        String password,
+	        boolean expectedSuccess) {
+
+	    LoginPage loginPage = new LoginPage(driver);
+	    loginPage.open();
+
+	    loginPage.login(email, password);
+
+	    if (expectedSuccess) {
+
+	        Assert.assertTrue(
+	                loginPage.isLoginSuccessful()
+	        );
+
+	    } else {
+
+	        Assert.assertTrue(
+	                loginPage.isErrorDisplayed()
+	        );
+	    }
+	}
+	@Test(priority = 7, dataProvider = "invalidRegistrationData")
+	public void verifyInvalidRegistrationScenarios(
+	        String firstName,
+	        String lastName,
+	        String dob,
+	        String address,
+	        String postcode,
+	        String city,
+	        String state,
+	        String country,
+	        String phone,
+	        String email,
+	        String password) {
+
+	    RegisterPage registerPage = new RegisterPage(driver);
+	    registerPage.open();
+
+	    registerPage.registerNewUser(
+	            firstName,
+	            lastName,
+	            dob,
+	            address,
+	            postcode,
+	            city,
+	            state,
+	            country,
+	            phone,
+	            email,
+	            password
+	    );
+
+	    Assert.assertTrue(
+	            registerPage.isValidationErrorDisplayed()
+	    );
+	}
     @Test(priority = 1)
     public void TC_m3_01_verifyRegistrationUIFields() {
         RegisterPage registerPage = new RegisterPage(driver);
@@ -43,25 +134,7 @@ public class SecurityTests extends BaseTest {
         Assert.assertTrue(loginPage.isLoginPageDisplayed());
     }
  
-    @Test(priority = 4)
-    public void TC_m3_11_loginWithIncorrectPassword() {
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.open();
  
-        loginPage.login("customer2@practicesoftwaretesting.com", "WrongPassword123!");
- 
-        Assert.assertTrue(loginPage.isErrorDisplayed());
-    }
- 
-    @Test(priority = 5)
-    public void TC_m3_13_loginWithEmptyFields() {
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.open();
- 
-        loginPage.login("", "");
- 
-        Assert.assertTrue(loginPage.isErrorDisplayed());
-    }
     @Test(priority = 6)
     public void TC_m3_02_validUserRegistration() {
      
@@ -90,71 +163,7 @@ public class SecurityTests extends BaseTest {
                 driver.getPageSource().contains("Login")
                 || driver.getCurrentUrl().contains("auth"));
     }
-    @Test(priority = 8)
-    public void TC_m3_05_registrationWithWeakPassword() {
-     
-        RegisterPage registerPage = new RegisterPage(driver);
-     
-        registerPage.open();
-     
-        registerPage.registerNewUser(
-                "Farah",
-                "Test",
-                "1999-05-10",
-                "Gaza Street",
-                "12345",
-                "Gaza",
-                "Gaza",
-                "Palestine",
-                "0599999999",
-                "farah123@test.com",
-                "123"
-        );
-     
-        Assert.assertTrue(
-                registerPage.isValidationErrorDisplayed());
-    }
-    @Test(priority = 9)
-    public void TC_m3_10_successfulLogin() {
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.open();
-     
-        loginPage.login(
-                "customer2@practicesoftwaretesting.com",
-                "welcome01"
-        );
-     
-        driver.get("https://practicesoftwaretesting.com/account");
-     
-        Assert.assertTrue(
-                driver.getCurrentUrl().contains("account")
-                || driver.getPageSource().contains("My account")
-        );
-    }
-    @Test(priority = 7)
-    public void TC_m3_04_registrationWithInvalidEmail() {
-     
-        RegisterPage registerPage = new RegisterPage(driver);
-     
-        registerPage.open();
-     
-        registerPage.registerNewUser(
-                "Farah",
-                "Test",
-                "1999-05-10",
-                "Gaza Street",
-                "12345",
-                "Gaza",
-                "Gaza",
-                "Palestine",
-                "0599999999",
-                "farah_test.com",
-                "StrongPassword123!"
-        );
-     
-        Assert.assertTrue(
-                registerPage.isValidationErrorDisplayed());
-    }
+  
     @Test(priority = 10)
     public void TC_m3_14_successfulLogout() {
         LoginPage loginPage = new LoginPage(driver);
